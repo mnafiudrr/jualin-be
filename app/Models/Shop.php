@@ -41,4 +41,18 @@ class Shop extends Model
             ->withPivot('role_id')
             ->withTimestamps();
     }
+
+    public static function createNewShop($request)
+    {
+        $shop = parent::create([
+            'name' => $request['name'],
+            'address' => $request['address'],
+            'owner_id' => auth()->user()->id,
+        ]);
+
+        $roles = Role::where('name', Role::OWNER)->first();
+        $shop->users()->attach(auth()->user()->id, ['role_id' => $roles->id]);
+
+        return $shop;
+    }
 }

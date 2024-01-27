@@ -59,7 +59,7 @@ class AuthController extends Controller
         
         $user = User::where('username', $request->username)->orWhere('email', $request->email)->firstOrFail();
 
-        $token = $user->createToken('auth_token')->plainTextToken;
+        $token = $user->createToken('token')->plainTextToken;
 
         return $this->successResponse([
             'access_token' => $token,
@@ -73,7 +73,7 @@ class AuthController extends Controller
      */
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        $request->user()->tokens()->delete();
 
         return $this->successResponse([], 'User logged out successfully');
     }

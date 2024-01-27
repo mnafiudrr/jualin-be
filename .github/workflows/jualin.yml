@@ -1,13 +1,13 @@
-name: Laravel
+name: Jualin
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "develop" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "develop" ]
 
 jobs:
-  laravel-tests:
+  jualin-tests:
 
     runs-on: ubuntu-latest
 

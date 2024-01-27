@@ -16,6 +16,7 @@ class ProductResource extends JsonResource
             'name' => $this->name,
             'is_show_in_transaction' => !!$this->is_show_in_transaction,
             'is_using_stock' => !!$this->is_using_stock,
+            'unit_value' => $this->unit_value,
             'unit' => [
                 'id' => $this->unit->id,
                 'name' => $this->unit->name,

@@ -43,13 +43,7 @@ class ShopController extends Controller
         DB::beginTransaction();
         try {
 
-            $shop = Shop::create([
-                'name' => $request->name,
-                'address' => $request->address,
-                'owner_id' => auth()->user()->id,
-            ]);
-
-            $shop->users()->attach(auth()->user()->id, ['role_id' => 1]);
+            $shop = Shop::createNewShop($request->only('name', 'address'));
 
             DB::commit();
         } catch (\Throwable $th) {
