@@ -24,6 +24,14 @@ class AddShopIdToRequest
                 ],
             ], 422);
 
+        if (!auth()->user()->shops->where('id', $shopIdFromHeader)->first())
+            return response()->json([
+                'message' => 'shop is invalid',
+                'errors' => [
+                    'shop_id' => ['shop_id is invalid'],
+                ],
+            ], 422);
+
         session(['shop_id' => $shopIdFromHeader]);
 
         return $next($request);

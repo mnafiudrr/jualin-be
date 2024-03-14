@@ -1,0 +1,357 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Register a new user",
+                "description": "Create a new user with username, password, and password confirmation.",
+                "operationId": "register",
+                "requestBody": {
+                    "description": "User registration data",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "name": {
+                                        "description": "User's name",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "User's mail",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "phone": {
+                                        "description": "User's phone",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "username": {
+                                        "description": "User's username",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's password",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string",
+                                        "format": "password"
+                                    },
+                                    "password_confirmation": {
+                                        "description": "Password confirmation",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User registered successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User registered successfully"
+                                        },
+                                        "user": {
+                                            "properties": {
+                                                "name": {
+                                                    "type": "string",
+                                                    "example": "My Name Is Owner"
+                                                },
+                                                "email": {
+                                                    "type": "string",
+                                                    "example": "name@owner.mail"
+                                                },
+                                                "username": {
+                                                    "type": "string",
+                                                    "example": "ownername"
+                                                },
+                                                "phone": {
+                                                    "type": "string",
+                                                    "example": "082229111332"
+                                                },
+                                                "id": {
+                                                    "type": "string",
+                                                    "example": "UNk9K4qv"
+                                                },
+                                                "updated_at": {
+                                                    "type": "string",
+                                                    "example": "2024-01-26T00:04:43.000000Z"
+                                                },
+                                                "created_at": {
+                                                    "type": "string",
+                                                    "example": "2024-01-26T00:04:43.000000Z"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Login a user",
+                "description": "Login a user with username or email and password.",
+                "operationId": "login",
+                "requestBody": {
+                    "description": "Login User",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "username": {
+                                        "description": "User's username",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User's password",
+                                        "required": [
+                                            "true"
+                                        ],
+                                        "type": "string",
+                                        "format": "password"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "User logged in successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User logged in successfully"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "access_token": {
+                                                    "type": "string",
+                                                    "example": "1|n2hiu136RYfhinoQkYySowrmhcCHesHtgJwOzmiP8ab44f87"
+                                                },
+                                                "token_type": {
+                                                    "type": "string",
+                                                    "example": "Bearer"
+                                                },
+                                                "user": {
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "example": "My Name Is Owner"
+                                                        },
+                                                        "email": {
+                                                            "type": "string",
+                                                            "example": "name@owner.mail"
+                                                        },
+                                                        "username": {
+                                                            "type": "string",
+                                                            "example": "ownername"
+                                                        },
+                                                        "phone": {
+                                                            "type": "string",
+                                                            "example": "082229111332"
+                                                        },
+                                                        "id": {
+                                                            "type": "string",
+                                                            "example": "UNk9K4qv"
+                                                        },
+                                                        "updated_at": {
+                                                            "type": "string",
+                                                            "example": "2024-01-26T00:04:43.000000Z"
+                                                        },
+                                                        "created_at": {
+                                                            "type": "string",
+                                                            "example": "2024-01-26T00:04:43.000000Z"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Logout a user",
+                "description": "Logout a user with token.",
+                "operationId": "logout",
+                "responses": {
+                    "200": {
+                        "description": "User logged out successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "User logged out successfully"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/auth": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Check token validity",
+                "description": "Check token validity.",
+                "operationId": "checkToken",
+                "responses": {
+                    "200": {
+                        "description": "Token is valid",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Token is valid"
+                                        },
+                                        "data": {
+                                            "properties": {
+                                                "access_token": {
+                                                    "type": "string",
+                                                    "example": "1|n2hiu136RYfhinoQkYySowrmhcCHesHtgJwOzmiP8ab44f87"
+                                                },
+                                                "token_type": {
+                                                    "type": "string",
+                                                    "example": "Bearer"
+                                                },
+                                                "user": {
+                                                    "properties": {
+                                                        "name": {
+                                                            "type": "string",
+                                                            "example": "My Name Is Owner"
+                                                        },
+                                                        "email": {
+                                                            "type": "string",
+                                                            "example": "name@owner.mail"
+                                                        },
+                                                        "username": {
+                                                            "type": "string",
+                                                            "example": "ownername"
+                                                        },
+                                                        "phone": {
+                                                            "type": "string",
+                                                            "example": "082229111332"
+                                                        },
+                                                        "id": {
+                                                            "type": "string",
+                                                            "example": "UNk9K4qv"
+                                                        },
+                                                        "updated_at": {
+                                                            "type": "string",
+                                                            "example": "2024-01-26T00:04:43.000000Z"
+                                                        },
+                                                        "created_at": {
+                                                            "type": "string",
+                                                            "example": "2024-01-26T00:04:43.000000Z"
+                                                        }
+                                                    },
+                                                    "type": "object"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    }
+}
